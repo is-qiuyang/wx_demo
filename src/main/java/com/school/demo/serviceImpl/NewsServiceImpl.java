@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class NewsServiceImpl implements NewsService {
 	
 //	@Autowired
-//	private NewsDao newsDao;
+//	private NewsMapper newsDao;
 //
 //	@Override
 //	public List<News> getNewsList() {

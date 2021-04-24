@@ -121,7 +121,12 @@
 			<version>2.6.1</version>
 		</dependency>
 
-
+		<!-- httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.5</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -136,7 +141,19 @@
 						<artifactId>mapper</artifactId>
 						<version>3.5.2</version>
 					</dependency>
-
+					<!--base64加密解密-->
+					<!--shiro依赖和缓存-->
+					<dependency>
+						<groupId>org.apache.shiro</groupId>
+						<artifactId>shiro-core</artifactId>
+						<version>1.4.0</version>
+						<exclusions>
+							<exclusion>
+								<artifactId>slf4j-api</artifactId>
+								<groupId>org.slf4j</groupId>
+							</exclusion>
+						</exclusions>
+					</dependency>
 				</dependencies>
 				<version>1.3.5</version>
 				<executions>
