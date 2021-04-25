@@ -8,10 +8,10 @@
 		<version>2.3.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.testVue</groupId>
-	<artifactId>vue-1</artifactId>
+	<groupId>com.school</groupId>
+	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>liberary</name>
+	<name>wx_demo</name>
 	<description>Demo project for Spring Boot of liberary</description>
 
 	<properties>
@@ -166,6 +166,12 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
 		</plugins>
 		<resources>
 			<resource>
