@@ -5,11 +5,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.school.demo.dto.GlobalResult;
 import com.school.demo.entity.WxUser;
 import com.school.demo.mapper.WxUserMapper;
+import com.school.demo.service.UserService;
+import com.school.demo.utils.RestTemplateUtil;
 import com.school.demo.utils.WechatUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,9 +39,10 @@ public class UserController {
     @ResponseBody
     public GlobalResult user_login(@RequestBody UserRequest userRequest) {
         String code = userRequest.getCode();
-        WxUserRequest rawData = userRequest.getRawData();
-        log.info("rawData---{}",JSON.toJSONString(rawData));
-
+//        WxUserRequest rawData = userRequest.getRawData();
+        log.info("rawData---{}",userRequest.getRawData());
+        // 签名：signature
+        JSONObject rawDataJson = JSON.parseObject(userRequest.getRawData());
         String signature = userRequest.getSignature();
         log.info("code---------{}",code);
         // 用户非敏感信息：rawData
@@ -52,7 +57,7 @@ public class UserController {
             return GlobalResult.build(500, "openId解析失败", null);
         }
         // 4.校验签名 小程序发送的签名signature与服务器端生成的签名signature2 = sha1(rawData + sessionKey)
-        String signature2 = DigestUtils.sha1Hex(JSON.toJSONString(rawData) + sessionKey);
+        String signature2 = DigestUtils.sha1Hex(userRequest.getRawData() + sessionKey);
         log.info("这是signature---{}，这是signature2----{}",signature,signature2);
         if (!signature.equals(signature2)) {
             return GlobalResult.build(500, "签名校验失败", null);
@@ -63,18 +68,25 @@ public class UserController {
         String skey = UUID.randomUUID().toString();
         if (user == null) {
             // 用户信息入库
+            String nickName = rawDataJson.getString("nickName");
+            String avatarUrl = rawDataJson.getString("avatarUrl");
+            String gender = rawDataJson.getString("gender");
+            String city = rawDataJson.getString("city");
+            String country = rawDataJson.getString("country");
+            String province = rawDataJson.getString("province");
+
             user = new WxUser();
             user.setOpenId(openid);
             user.setSkey(skey);
             user.setCreateTime(new Date());
             user.setLastVisitTime(new Date());
             user.setSessionKey(sessionKey);
-            user.setCity(rawData.getCity());
-            user.setProvince(rawData.getProvince());
-            user.setCountry(rawData.getCountry());
-            user.setAvatarUrl(rawData.getAvatarUrl());
-            user.setGender(rawData.getGender());
-            user.setNickName(rawData.getNickName());
+            user.setCity(city);
+            user.setProvince(province);
+            user.setCountry(country);
+            user.setAvatarUrl(avatarUrl);
+            user.setGender(Integer.parseInt(gender));
+            user.setNickName(nickName);
 
             this.userMapper.insert(user);
         } else {

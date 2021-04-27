@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Data
 public class UserRequest {
     private String code;
-    private WxUserRequest rawData;
+    private String rawData;
     private String signature;
 }

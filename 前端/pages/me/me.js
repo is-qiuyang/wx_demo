@@ -11,7 +11,7 @@ Page({
 
   onLoad: function() {
     // 页面加载时使用用户授权逻辑，弹出确认的框  
-    this.userAuthorized()
+  //  this.userAuthorized()
   },
   
   userAuthorized() {
@@ -49,7 +49,7 @@ Page({
                 url: 'http://localhost:8080/wx/login',
                 method: 'POST',
                 header: {
-                  'content-type': 'application/x-www-form-urlencoded'
+                  'content-type': 'application/json'
                 },
                 data: {
                   code: login_res.code, //临时登录凭证
