@@ -2,19 +2,14 @@ package com.school.demo.control;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.school.demo.control.request.UserRequest;
 import com.school.demo.dto.GlobalResult;
 import com.school.demo.entity.WxUser;
 import com.school.demo.mapper.WxUserMapper;
-import com.school.demo.service.UserService;
-import com.school.demo.utils.RestTemplateUtil;
 import com.school.demo.utils.WechatUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;

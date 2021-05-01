@@ -1,8 +1,11 @@
 package com.school.demo.entity;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Table(name = "major")
+@ToString
 public class Major {
     /**
      * 专业id
@@ -22,7 +25,13 @@ public class Major {
      * 学校id
      */
     @Column(name = "school_id")
-    private Integer schoolId;
+    private String schoolId;
+
+    /**
+     * 专业简介
+     */
+    @Column(name = "major_description")
+    private String majorDescription;
 
     /**
      * 获取专业id
@@ -65,7 +74,7 @@ public class Major {
      *
      * @return school_id - 学校id
      */
-    public Integer getSchoolId() {
+    public String getSchoolId() {
         return schoolId;
     }
 
@@ -74,7 +83,25 @@ public class Major {
      *
      * @param schoolId 学校id
      */
-    public void setSchoolId(Integer schoolId) {
+    public void setSchoolId(String schoolId) {
         this.schoolId = schoolId;
+    }
+
+    /**
+     * 获取专业简介
+     *
+     * @return major_description - 专业简介
+     */
+    public String getMajorDescription() {
+        return majorDescription;
+    }
+
+    /**
+     * 设置专业简介
+     *
+     * @param majorDescription 专业简介
+     */
+    public void setMajorDescription(String majorDescription) {
+        this.majorDescription = majorDescription == null ? null : majorDescription.trim();
     }
 }

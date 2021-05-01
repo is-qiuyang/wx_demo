@@ -7,8 +7,12 @@
     -->
     <id column="school_id" jdbcType="INTEGER" property="schoolId" />
     <result column="school_name" jdbcType="VARCHAR" property="schoolName" />
-    <result column="school_major_id" jdbcType="INTEGER" property="schoolMajorId" />
+    <result column="school_major_id" jdbcType="VARCHAR" property="schoolMajorId" />
     <result column="school_text" jdbcType="VARCHAR" property="schoolText" />
     <result column="school_score" jdbcType="INTEGER" property="schoolScore" />
+    <result column="build_time" jdbcType="INTEGER" property="buildTime" />
+    <result column="nature" jdbcType="VARCHAR" property="nature" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="collect_falg" jdbcType="BIT" property="collectFalg" />
   </resultMap>
 </mapper>

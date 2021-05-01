@@ -19,7 +19,7 @@ public class SchoolMassege {
      * 学校拥有的专业id
      */
     @Column(name = "school_major_id")
-    private Integer schoolMajorId;
+    private String schoolMajorId;
 
     /**
      * 学校简介
@@ -32,6 +32,28 @@ public class SchoolMassege {
      */
     @Column(name = "school_score")
     private Integer schoolScore;
+
+    /**
+     * 创办时间
+     */
+    @Column(name = "build_time")
+    private Integer buildTime;
+
+    /**
+     * 大学性质
+     */
+    private String nature;
+
+    /**
+     * 学校地址
+     */
+    private String address;
+
+    /**
+     * 是否收藏
+     */
+    @Column(name = "collect_falg")
+    private Boolean collectFalg;
 
     /**
      * @return school_id
@@ -70,7 +92,7 @@ public class SchoolMassege {
      *
      * @return school_major_id - 学校拥有的专业id
      */
-    public Integer getSchoolMajorId() {
+    public String getSchoolMajorId() {
         return schoolMajorId;
     }
 
@@ -79,8 +101,8 @@ public class SchoolMassege {
      *
      * @param schoolMajorId 学校拥有的专业id
      */
-    public void setSchoolMajorId(Integer schoolMajorId) {
-        this.schoolMajorId = schoolMajorId;
+    public void setSchoolMajorId(String schoolMajorId) {
+        this.schoolMajorId = schoolMajorId == null ? null : schoolMajorId.trim();
     }
 
     /**
@@ -117,5 +139,77 @@ public class SchoolMassege {
      */
     public void setSchoolScore(Integer schoolScore) {
         this.schoolScore = schoolScore;
+    }
+
+    /**
+     * 获取创办时间
+     *
+     * @return build_time - 创办时间
+     */
+    public Integer getBuildTime() {
+        return buildTime;
+    }
+
+    /**
+     * 设置创办时间
+     *
+     * @param buildTime 创办时间
+     */
+    public void setBuildTime(Integer buildTime) {
+        this.buildTime = buildTime;
+    }
+
+    /**
+     * 获取大学性质
+     *
+     * @return nature - 大学性质
+     */
+    public String getNature() {
+        return nature;
+    }
+
+    /**
+     * 设置大学性质
+     *
+     * @param nature 大学性质
+     */
+    public void setNature(String nature) {
+        this.nature = nature == null ? null : nature.trim();
+    }
+
+    /**
+     * 获取学校地址
+     *
+     * @return address - 学校地址
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * 设置学校地址
+     *
+     * @param address 学校地址
+     */
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    /**
+     * 获取是否收藏
+     *
+     * @return collect_falg - 是否收藏
+     */
+    public Boolean getCollectFalg() {
+        return collectFalg;
+    }
+
+    /**
+     * 设置是否收藏
+     *
+     * @param collectFalg 是否收藏
+     */
+    public void setCollectFalg(Boolean collectFalg) {
+        this.collectFalg = collectFalg;
     }
 }

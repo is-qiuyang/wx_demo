@@ -8,5 +8,6 @@
     <id column="school_major_id" jdbcType="INTEGER" property="schoolMajorId" />
     <result column="school_major_name" jdbcType="VARCHAR" property="schoolMajorName" />
     <result column="school_id" jdbcType="INTEGER" property="schoolId" />
+    <result column="major_description" jdbcType="VARCHAR" property="majorDescription" />
   </resultMap>
 </mapper>

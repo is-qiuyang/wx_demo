@@ -1,4 +1,4 @@
-package com.school.demo.control;
+package com.school.demo.control.request;
 
 import com.school.demo.entity.WxUser;
 import lombok.Data;

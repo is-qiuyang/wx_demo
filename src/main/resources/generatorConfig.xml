@@ -70,15 +70,15 @@
              -->
             <!--<property name="rootInterface" value="com.weimob.elasticjob.dao.core.CommonMapper"/>-->
         </javaClientGenerator>
-        <table tableName="wx_user" domainObjectName="WxUser">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+        <!--<table tableName="wx_user" domainObjectName="WxUser">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
         <!--<table tableName="major" domainObjectName="Major">-->
             <!--<generatedKey column="school_major_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
-        <!--<table tableName="school_massege" domainObjectName="SchoolMassege">-->
-            <!--<generatedKey column="school_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
+        <table tableName="school_massege" domainObjectName="SchoolMassege">
+            <generatedKey column="school_id" sqlStatement="MySql" identity="true"/>
+        </table>
         <!--<table tableName="information" domainObjectName="Information">-->
             <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
