@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface SchoolService {
     List<SchoolResponse> getSchoolInformation(SchoolRequest schoolRequest);
+
+    SchoolResponse getSchoolOne(Integer schoolId);
 }

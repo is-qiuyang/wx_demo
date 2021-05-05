@@ -16,7 +16,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo( apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.java.foodshop.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.school.demo.control"))
                 .paths(PathSelectors.any())
                 .build();
     }

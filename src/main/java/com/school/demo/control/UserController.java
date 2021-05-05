@@ -4,9 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.school.demo.control.request.UserRequest;
 import com.school.demo.dto.GlobalResult;
+import com.school.demo.entity.User;
 import com.school.demo.entity.WxUser;
+import com.school.demo.mapper.UserMapper;
 import com.school.demo.mapper.WxUserMapper;
 import com.school.demo.utils.WechatUtil;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,7 @@ public class UserController {
     /**
      * 微信用户登录详情
      */
+    @ApiOperation(value = "微信用户登录详情")
     @PostMapping("wx/login")
     @ResponseBody
     public GlobalResult user_login(@RequestBody UserRequest userRequest) {
@@ -51,13 +55,7 @@ public class UserController {
         if (null==openid||"".equals(openid)){
             return GlobalResult.build(500, "openId解析失败", null);
         }
-        // 4.校验签名 小程序发送的签名signature与服务器端生成的签名signature2 = sha1(rawData + sessionKey)
-        String signature2 = DigestUtils.sha1Hex(userRequest.getRawData() + sessionKey);
-        log.info("这是signature---{}，这是signature2----{}",signature,signature2);
-        if (!signature.equals(signature2)) {
-            return GlobalResult.build(500, "签名校验失败", null);
-        }
-        // 5.根据返回的User实体类，判断用户是否是新用户，是的话，将用户信息存到数据库；不是的话，更新最新登录时间
+        // 4.根据返回的User实体类，判断用户是否是新用户，是的话，将用户信息存到数据库；不是的话，更新最新登录时间
         WxUser user = this.userMapper.selectByPrimaryKey(openid);
         // uuid生成唯一key，用于维护微信小程序用户与服务端的会话
         String skey = UUID.randomUUID().toString();
@@ -95,4 +93,13 @@ public class UserController {
         GlobalResult result = GlobalResult.build(200, null, skey);
         return result;
     }
+
+    @Autowired
+    private UserMapper userMapper1;
+    @PostMapping("/user")
+    @ResponseBody
+    public void user_login(@RequestBody User user) {
+        userMapper1.insert(user);
+    }
+
 }

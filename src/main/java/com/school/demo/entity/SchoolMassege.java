@@ -50,12 +50,6 @@ public class SchoolMassege {
     private String address;
 
     /**
-     * 是否收藏
-     */
-    @Column(name = "collect_falg")
-    private Boolean collectFalg;
-
-    /**
      * @return school_id
      */
     public Integer getSchoolId() {
@@ -193,23 +187,5 @@ public class SchoolMassege {
      */
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
-    }
-
-    /**
-     * 获取是否收藏
-     *
-     * @return collect_falg - 是否收藏
-     */
-    public Boolean getCollectFalg() {
-        return collectFalg;
-    }
-
-    /**
-     * 设置是否收藏
-     *
-     * @param collectFalg 是否收藏
-     */
-    public void setCollectFalg(Boolean collectFalg) {
-        this.collectFalg = collectFalg;
     }
 }

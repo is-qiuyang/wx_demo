@@ -6,6 +6,7 @@ import com.school.demo.dto.GlobalResult;
 import com.school.demo.entity.Information;
 import com.school.demo.entity.News;
 import com.school.demo.service.NewsService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,7 @@ public class NewsController {
 
     /**查询全部的的新闻表信息
      */
+	@ApiOperation(value = "查询全部的的新闻表信息")
     @ResponseBody
     @RequestMapping(value="/getNewsList",method=RequestMethod.GET)
     public GlobalResult getNewsByNewsId(){
@@ -38,6 +40,7 @@ public class NewsController {
 	 * @param id 要查询的新闻id号码
 	 * @return JSON类型的指定新闻id的新闻表信息
 	 */
+	@ApiOperation(value = "根据id查询对应的新闻表信息")
 	@ResponseBody
 	@RequestMapping(value="/getNewsByNewsId",method=RequestMethod.GET)
 	public GlobalResult getNewsByNewsId(@RequestParam("id")Integer id){

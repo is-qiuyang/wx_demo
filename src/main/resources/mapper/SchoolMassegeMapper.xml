@@ -13,6 +13,5 @@
     <result column="build_time" jdbcType="INTEGER" property="buildTime" />
     <result column="nature" jdbcType="VARCHAR" property="nature" />
     <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="collect_falg" jdbcType="BIT" property="collectFalg" />
   </resultMap>
 </mapper>

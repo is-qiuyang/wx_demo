@@ -5,9 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="bod_id" jdbcType="INTEGER" property="bodId" />
     <result column="leaderboard_title" jdbcType="VARCHAR" property="leaderboardTitle" />
-    <result column="leaderboard_value" jdbcType="VARCHAR" property="leaderboardValue" />
-    <result column="rank" jdbcType="INTEGER" property="rank" />
   </resultMap>
 </mapper>

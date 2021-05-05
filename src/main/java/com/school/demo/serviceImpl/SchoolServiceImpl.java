@@ -81,6 +81,27 @@ public class SchoolServiceImpl implements SchoolService {
 
     }
 
+    @Override
+    public SchoolResponse getSchoolOne(Integer schoolId) {
+        SchoolMassege schoolMassege = schoolMassegeMapper.selectByPrimaryKey(schoolId);
+        List<String> majorIdList = Arrays.asList(schoolMassege.getSchoolMajorId().split(","));
+        List<Integer> magorIds = majorIdList.stream().map(Integer::valueOf).collect(Collectors.toList());
+        Example majorExample = new Example(Major.class);
+        Example.Criteria majorCriteria = majorExample.createCriteria();
+        majorCriteria.andIn("schoolId",magorIds);
+        List<Major> majors = majorMapper.selectByExample(majorExample);
+        SchoolResponse response = new SchoolResponse();
+        response.setId(schoolMassege.getSchoolId());
+        response.setName(schoolMassege.getSchoolName());
+        response.setDescription(schoolMassege.getSchoolText());
+        response.setBuildTime(schoolMassege.getBuildTime());
+        response.setNature(schoolMassege.getNature());
+        response.setAddress(schoolMassege.getAddress());
+        response.setMajors(majors);
+        return response;
+
+    }
+
     private void buildSchoolResponse(List<SchoolMassege> schools, Map<Integer, Major> majorMap,List<SchoolResponse> responses) {
         SchoolResponse response;
         for (SchoolMassege schoolMassege : schools) {

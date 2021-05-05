@@ -1,16 +1,24 @@
-## 项目基本设置
-#server:
-#  port: 8080
-#  servlet:
-#    context-path: /
-## SQLserver 驱动连接设置
-#jdbc:
-#  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#  user: sa
-#  password: 123
-#  url: jdbc:sqlserver://localhost:1433;DatabaseName=liberary
-#
-## MyBatis配置设置
-#mybatis_config_file: mybatis-config.xml
-#mapper_path: /mapper/**.xml
-#entity_package: com.liberary.demo.entity
+server:
+  port: 8080
+
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: MYSQL
+    continue-on-error: false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    schema:
+#      - classpath:sql/schema.sql
+      - classpath:sql/data.sql
+    initialization-mode: ALWAYS # ALWAYS ����ִ��, EMBEDDED , NEVER �Ӳ�ִ��;
+#    url: jdbc:mysql://localhost:3306/school?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false&autoReconnect=true&failOverReadOnly=false
+    url: jdbc:mysql://129.211.72.78:3306/school?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false&autoReconnect=true&failOverReadOnly=false
+mybatis:
+  type-aliases-package: com.school.demo.entity
+  mapper-locations: classpath:mapper/*.xml

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.demo.mapper.SchoolLikeMapper">
+  <resultMap id="BaseResultMap" type="com.school.demo.entity.SchoolLike">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="skey" jdbcType="VARCHAR" property="skey" />
+    <result column="school_id" jdbcType="INTEGER" property="schoolId" />
+    <result column="collectFalg" jdbcType="BIT" property="collectfalg" />
+  </resultMap>
+  <select id="selectBySkeyAndSchool" resultType="com.school.demo.entity.SchoolLike">
+    select * from school_like
+    where skey=#{skey} and school_id=#{schoolId}
+  </select>
+</mapper>
